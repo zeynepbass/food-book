@@ -1,18 +1,28 @@
 
 import React from "react";
-import { View, Platform } from "react-native";
+import { ScrollView, Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
 import Slider from "../components/Slider";
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 const HomeScreen = () => {
   return (
-        <SafeAreaView style={{ flex: 1, paddingTop: Platform.OS === "android" ? 10 : 0 }}>
-    <View>
-      <SearchBar />
-      <Slider />
-      <Card />
-    </View></SafeAreaView>
+    <SafeAreaView
+      style={{
+   
+        paddingTop: Platform.OS === "android" ? 90 : 60, 
+      }}
+    >
+      <ScrollView 
+        showsVerticalScrollIndicator={true}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
+        <SearchBar />
+        <Slider style={{ height: 200, marginBottom: 16 }} />
+        <Card columns={2} /> 
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -6,10 +6,10 @@ const { width, height } = Dimensions.get("window");
 const DetayScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Üst bordo alan */}
+
       <View style={styles.topBar}></View>
 
-      {/* Görsel */}
+
       <View style={styles.imageContainer}>
         <Image
           source={require("../assets/11006672.png")}
@@ -18,7 +18,7 @@ const DetayScreen = () => {
         />
       </View>
 
-      {/* İçerik */}
+
       <View style={styles.content}>
         <Text style={styles.title}>Başlık</Text>
         <Text style={styles.description}>

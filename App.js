@@ -1,7 +1,9 @@
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Feather from "@expo/vector-icons/Feather";
+import { Image } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import UserScreen from "./screens/UserScreen";
 import FavoriteScreen from "./screens/FavoriteScreen";
@@ -14,9 +16,16 @@ const BottomTab = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+
       screenOptions={{
-        headerStyle: { backgroundColor: 'transparent' },
-        headerTintColor: 'rgba(59, 10, 10, 0.5)',
+        headerTitle: () => (
+          <Image
+            source={{uri:("https://png.pngtree.com/png-clipart/20250111/original/pngtree-a-chef-holding-hamburger-and-fries-png-image_20111871.png")}} //
+            style={{ width: 70, height: 100, resizeMode: "contain" }}
+          />
+        ),
+        headerStyle: { backgroundColor: "transparent" },
+        headerTintColor: "rgba(59, 10, 10, 0.5)",
         headerTitleAlign: "center",
         headerTransparent: true,
         tabBarInactiveTintColor: "rgba(255,255,255,0.5)",
@@ -24,7 +33,6 @@ const BottomTab = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "transparent", // burası transparent
           backgroundColor: "rgb(151,10,18)",
           height: 70,
           borderTopWidth: 0,
@@ -32,8 +40,8 @@ const BottomTab = () => {
           shadowColor: "#000",
           shadowOffset: { width: 0, height: 5 },
           shadowOpacity: 0.1,
-          shadowRadius: 5
-        }
+          shadowRadius: 5,
+        },
       }}
     >
       <Tab.Screen
@@ -74,13 +82,20 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
+          
           component={BottomTab}
-          options={{ headerShown: false }}
+          options={{ headerShown: false,title:"" }}
         />
         <Stack.Screen
           name="Detay"
           component={DetayScreen}
-          options={{ title: "Detay" }}
+          options={{
+            title: "Detay",
+            headerStyle: { backgroundColor: "transparent" },
+            headerTransparent: true,
+            headerTintColor: "white",
+            headerTitleAlign: "center",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
