@@ -1,11 +1,18 @@
-import { View, Text } from 'react-native';
 
-const FavoriteScreen = () => {
+import React from "react";
+import { View, Platform } from "react-native";
+import Card from "../components/Card";
+import SearchBar from "../components/SearchBar";
+import { SafeAreaView } from "react-native-safe-area-context";
+const FavoriScreen = () => {
   return (
+            <SafeAreaView style={{ flex: 1, paddingTop: Platform.OS === "android" ? 25 : 0 }}>
     <View>
-    <Text>Merhaba</Text>
-  </View>
-  )
-}
+      <SearchBar />
+      <Card />
+    </View>
+    </SafeAreaView>
+  );
+};
 
-export default FavoriteScreen
+export default FavoriScreen;
