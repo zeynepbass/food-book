@@ -1,28 +1,34 @@
 
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {TouchableOpacity} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import { Image } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import UserScreen from "./screens/UserScreen";
 import FavoriteScreen from "./screens/FavoriteScreen";
 import DetayScreen from "./screens/DetayScreen";
-
+import Toast from 'react-native-toast-message';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const BottomTab = () => {
+  const navigation=useNavigation()
   return (
     <Tab.Navigator
       initialRouteName="Home"
 
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerTitle: () => (
-          <Image
-            source={{uri:("https://png.pngtree.com/png-clipart/20250111/original/pngtree-a-chef-holding-hamburger-and-fries-png-image_20111871.png")}} //
-            style={{ width: 70, height: 100, resizeMode: "contain" }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+            <Image
+              source={{ uri: "https://png.pngtree.com/png-clipart/20250111/original/pngtree-a-chef-holding-hamburger-and-fries-png-image_20111871.png" }}
+              style={{ width: 70, height: 100, resizeMode: "contain" }}
+            />
+
+        
+          </TouchableOpacity>
         ),
         headerStyle: { backgroundColor: "transparent" },
         headerTintColor: "rgba(59, 10, 10, 0.5)",
@@ -42,7 +48,7 @@ const BottomTab = () => {
           shadowOpacity: 0.1,
           shadowRadius: 5,
         },
-      }}
+      })}
     >
       <Tab.Screen
         name="Home"
@@ -77,8 +83,10 @@ const BottomTab = () => {
 };
 
 export default function App() {
+
   return (
-    <NavigationContainer>
+    <>    <NavigationContainer>
+
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
@@ -99,5 +107,8 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+              <Toast />
+    </>
+
   );
 }

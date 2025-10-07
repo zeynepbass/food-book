@@ -3,13 +3,8 @@ import { View, Text, FlatList, Image, StyleSheet, Dimensions } from 'react-nativ
 import React from 'react';
 const { width } = Dimensions.get('window');
 
-const data = [
-  { id: '1', image: 'https://via.placeholder.com/300x150', title: 'Slide 1' },
-  { id: '2', image: 'https://via.placeholder.com/300x150', title: 'Slide 2' },
-  { id: '3', image: 'https://via.placeholder.com/300x150', title: 'Slide 3' },
-];
 
-const Slider = () => {
+const Slider = ({data}) => {
   return (
     <View style={styles.container}>
       <FlatList
@@ -20,8 +15,8 @@ const Slider = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={styles.slide}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
+            <Image source={{ uri: item.photo }} style={styles.image} />
+
           </View>
         )}
       />
